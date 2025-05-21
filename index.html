@@ -6,118 +6,174 @@
   <title>Carchidi Real Estate</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
-    /* Your existing CSS remains unchanged — omitted here for brevity */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #e6f0f8;
+      color: #003049;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    .scroll-container {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      width: 100vw;
+      overflow-x: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      scroll-behavior: smooth;
+    }
+
+    .room {
+      flex: 0 0 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 2rem;
+      background-color: #f5f8fb;
+    }
+
+    .logo {
+      width: 400px;
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .room.visible[data-label=""] .logo {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .agent-img {
+      width: 180px;
+      border-radius: 10%;
+      margin: 1rem 0;
+    }
+
+    .listings-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .listing-card {
+      text-decoration: none;
+      color: inherit;
+      border: 2px dashed #669bbc;
+      width: calc(33.333% - 1rem);
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .listing-img-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #eee;
+    }
+
+    .listing-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .made-by {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 100;
+    }
+
+    .made-by a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #000;
+      font-size: 0.775rem;
+    }
+
+    .made-by-logo {
+      width: 18px;
+      height: auto;
+      margin-left: 0.4rem;
+      opacity: 0.75;
+    }
   </style>
 </head>
 
 <body>
-  <!-- Elfsight core -->
   <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
-  <!-- Horizontal Scroll Container -->
   <div class="scroll-container" id="scrollContainer">
-    <!-- Entrance -->
     <section class="room" data-label="">
-      <div class="blueprint-line"></div>
       <img src="blue.png" alt="Logo" class="logo">
     </section>
 
-    <!-- Agent -->
     <section class="room" data-label="Welcome">
-      <div class="blueprint-line"></div>
       <img src="head.jpg" alt="Agent" class="agent-img">
       <h2>Meet Your Agent</h2>
-      <p>Sam Carchidi brings real-world experience and local insight to every real estate deal... [your full bio here]</p>
+      <p>Sam Carchidi brings real-world experience and local insight to every real estate deal...</p>
     </section>
 
-    <!-- Listings -->
     <section class="room" data-label="Listings">
-      <div class="blueprint-line"></div>
       <h2>Featured Listings</h2>
       <div class="listings-grid">
         <a href="https://www.zillow.com/homedetails/3741-Dorchester-Dr-Williamstown-NJ-08094/325535118_zpid/" class="listing-card">
           <div class="listing-img-wrapper">
-            <img src="3741.png" alt="3741 Dorchester Dr" class="listing-img">
+            <img src="3741.png" alt="3741 Dorchester Dr">
           </div>
           <h3>3741 Dorchester Dr</h3>
           <p>Williamstown, NJ · 3 Bed / 2 Bath · $495,000</p>
         </a>
         <a href="https://www.zillow.com/homedetails/535-Pine-St-Philadelphia-PA-19106/10196408_zpid/" class="listing-card">
           <div class="listing-img-wrapper">
-            <img src="535.png" alt="535 Pine St" class="listing-img">
+            <img src="535.png" alt="535 Pine St">
           </div>
           <h3>535 Pine St</h3>
           <p>Philadelphia, PA · 3 Bed / 4 Bath · $715,000</p>
         </a>
         <a href="https://www.zillow.com/homedetails/1837-W-Thompson-St-Philadelphia-PA-19121/10455872_zpid/" class="listing-card">
           <div class="listing-img-wrapper">
-            <img src="1837.png" alt="1837 W Thompson St" class="listing-img">
+            <img src="1837.png" alt="1837 W Thompson St">
           </div>
           <h3>1837 W Thompson St</h3>
           <p>Philadelphia, PA · 5 Bed / 3 Bath · $380,000</p>
         </a>
       </div>
-      <p class="more-listings">
-        <a
-          href="https://www.zillow.com/profile/CarchidiRealEstate"
-          class="more-listings-link"
-          target="_blank"
-          rel="noopener"
-        >
-          Click here to see more listings.
-        </a>
-      </p>
     </section>
 
-    <!-- Testimonials -->
     <section class="room" data-label="Testimonials">
-      <div class="blueprint-line"></div>
       <h2>What Clients Say</h2>
       <div class="elfsight-app-a82865db-06d7-4f33-b299-a248be10e201" data-elfsight-app-lazy></div>
     </section>
 
-    <!-- Instagram -->
     <section class="room" data-label="Instagram">
-      <div class="blueprint-line"></div>
       <h2>Day In the Life</h2>
       <div class="elfsight-app-2a9f788f-4859-4bb0-8875-b376d10707c8" data-elfsight-app-lazy></div>
     </section>
 
-    <!-- Buyer Quiz Section -->
-    <section class="room" data-label="Buyer Quiz">
-      <div class="quiz-container" id="quiz">
-        <h2>Are You Ready to Buy?</h2>
-        <div class="quiz-content">
-          <div class="quiz-question" id="question"></div>
-          <div class="quiz-options" id="options"></div>
-          <div class="quiz-progress" id="progress"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
     <section class="room" data-label="Contact">
-      <div class="blueprint-line"></div>
       <div style="text-align: left" class="sender-form-field" data-sender-form-id="makgwb64evolmx9cram"></div>
     </section>
   </div>
 
-  <!-- Floating logo -->
-  <a id="floating-logo-link">
-    <img id="floating-logo" src="float-cursor.png" alt="Floating Logo">
-  </a>
-
-  <!-- Footer -->
   <footer class="made-by">
     <a href="https://fastwalk.org" target="_blank" rel="noopener">
       <span>Made by</span>
       <img src="fastwalk-logo.png" alt="Fastwalk logo" class="made-by-logo">
     </a>
   </footer>
-
-  <!-- Scripts (unchanged from original) -->
-  <script src="https://cdn.sender.net/accounts_resources/universal.js" async></script>
-  <!-- Your original scrolling, animation, and quiz scripts would stay here -->
-
 </body>
 </html>
